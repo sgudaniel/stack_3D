@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using System;
 
 public class EventPublisher : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    private static EventPublisher instance = null; 
+    static Subject<string> EventMsg = new Subject<string>();
+    
+    public static IObservable<string> Event { get { return EventMsg; } }
+
+    private EventPublisher(){
         
+        Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0)).
+        Subscribe(x => EventMsg.OnNext("double_click"));
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public static EventPublisher Instance{
+        get{
+            if(instance == null) instance = new EventPublisher();
+            return instance;
+        }
     }
+
 }
