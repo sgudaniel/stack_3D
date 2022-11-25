@@ -7,7 +7,7 @@ using UniRx;
 public class StartupComponent : MonoBehaviour
 {
     
-    private CubeComponent cubeComponent;
+    private StackComponent stackComponent;
     private ScoreCounterComponent scoreCounterComponent;
 
     StartupComponent(){
@@ -20,7 +20,7 @@ public class StartupComponent : MonoBehaviour
         var inFrontOfCamera=  Camera.main.transform.TransformPoint(Vector3.forward * 10);
         var cameraRotation = Camera.main.transform.rotation;
         var cameraRotationEuler = Quaternion.Euler(cameraRotation.x,cameraRotation.y,cameraRotation.z);
-        var cubeFactory = new CubeFactory();
+        var stackFactory = new StackFactory();
         var scoreCounterFactory = new ScoreCounterFactory();
 
         // this.sphereComponent =  sphereFactory.CreateSphere(new Vector3(0,6,0), false);
@@ -31,7 +31,7 @@ public class StartupComponent : MonoBehaviour
 
 
         this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotationEuler);
-        this.cubeComponent = cubeFactory.Create(new Vector3(0,1,0), false);
+        this.stackComponent = stackFactory.Create(new Vector3(0,1,0), false);
 
         //this.RegisterEvents();
 

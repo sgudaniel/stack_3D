@@ -5,27 +5,27 @@ using UnityEngine;
 public class PrefabResolver : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cubePrefab;
+    private GameObject stackPrefab;
     [SerializeField]
     private GameObject scoreCounterPrefab;
     
-    private static GameObject cubePrefabStatic;
+    private static GameObject stackPrefabStatic;
     private static GameObject scoreCounterPrefabStatic;
     
 
     void Awake() 
     {
-        PrefabResolver.cubePrefabStatic = cubePrefab;        
+        PrefabResolver.stackPrefabStatic = stackPrefab;        
         PrefabResolver.scoreCounterPrefabStatic = scoreCounterPrefab;
     }
 
 
-    public static GameObject CubePrefab
+    public static GameObject StackPrefab
     {
         
             get
             {
-                return PrefabResolver.cubePrefabStatic;
+                return PrefabResolver.stackPrefabStatic;
             }
         
     

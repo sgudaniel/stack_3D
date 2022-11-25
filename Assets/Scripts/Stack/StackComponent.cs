@@ -4,7 +4,7 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class CubeComponent : MonoBehaviour
+public class StackComponent : MonoBehaviour
 {
     private Rigidbody rigidbody;
     private Subject<Unit> theSubject;
@@ -25,7 +25,7 @@ public class CubeComponent : MonoBehaviour
         }
     }
 
-    CubeComponent(){
+    StackComponent(){
         this.theSubject = new Subject<Unit>();
 
         // sizeX = new ReactiveProperty<float>(this.transform.localScale.x);
