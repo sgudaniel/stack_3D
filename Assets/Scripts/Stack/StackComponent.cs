@@ -40,8 +40,12 @@ public class StackComponent : MonoBehaviour
     void Update()
     {
         transition += Time.deltaTime * moveSpeed;
+        
         var x = Mathf.Sin(transition * boundary);
-        move(x,1,0);
+        var y  = this.transform.localPosition.y;
+        var z  = this.transform.localPosition.z;
+
+        move(x,y,z);
     }
 
     void Slice(Vector3 sliced)
