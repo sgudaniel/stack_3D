@@ -4,26 +4,26 @@ using UnityEngine;
 using UniRx;
 using System;
 
-public class EventPublisher : MonoBehaviour
+public class EventPublisher
 {
 
     private static EventPublisher instance = null; 
     static Subject<string> EventMsg = new Subject<string>();
     
-    public static IObservable<string> Event { get { return EventMsg; } }
+    public IObservable<string> Event { get { return EventMsg; } }
 
     private EventPublisher(){
         
         Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0)).
-        Subscribe(x => EventMsg.OnNext("double_click"));
+        Subscribe(x => EventMsg.OnNext("click"));
 
     }
 
-    public static EventPublisher Instance{
-        get{
+    public static EventPublisher getInstance(){
+        
             if(instance == null) instance = new EventPublisher();
             return instance;
-        }
+        
     }
 
 }
