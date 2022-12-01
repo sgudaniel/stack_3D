@@ -7,34 +7,35 @@ using UniRx;
 public class StartupComponent : MonoBehaviour
 {
     
-    private StackComponent stackComponent;
+    private List<StackComponent> stackComponent = new List<StackComponent>();
     private ScoreCounterComponent scoreCounterComponent;
+    private EventPublisher evPublisher = EventPublisher.getInstance();
+    private Logger logger = Logger.getInstance();
 
-    StartupComponent(){
+    StartupComponent()
+    {
+        
         
     }
     
     void Start()
     {
         
-        var inFrontOfCamera=  Camera.main.transform.TransformPoint(Vector3.forward * 10);
-        var cameraRotation = Camera.main.transform.rotation;
-        var cameraRotationEuler = Quaternion.Euler(cameraRotation.x,cameraRotation.y,cameraRotation.z);
         var stackFactory = new StackFactory();
         var scoreCounterFactory = new ScoreCounterFactory();
 
-        // this.sphereComponent =  sphereFactory.CreateSphere(new Vector3(0,6,0), false);
+
+        var inFrontOfCamera =  CameraUtil.inFront(Camera.main);
+        var cameraRotation = CameraUtil.inFrontRotation(Camera.main);        
+
+        this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
         
-        // this.obstacleComponents.Add(obstacleFactory.CreateObstacle(new Vector3(0,0,0)));
-        // this.obstacleComponents.Add(obstacleFactory.CreateObstacle(new Vector3(0,2,0)));
-        // this.obstacleComponents.Add(obstacleFactory.CreateObstacle(new Vector3(0,4,0)));
 
+        
+        this.stackComponent.Add(stackFactory.Create(new Vector3(0,1,0), false));
+        //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
 
-        this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotationEuler);
-        this.stackComponent = stackFactory.Create(new Vector3(0,1,0), false);
-
-        //this.RegisterEvents();
-
+        this.RegisterEvents();
         
     }
 
@@ -44,8 +45,9 @@ public class StartupComponent : MonoBehaviour
         
     }
 
-    private void RegisterEvents(){
-        
+    private void RegisterEvents()
+    {
+        //evPublisher.Event.Where(x=> x == "click").Subscribe(_=> Debug.Log("hihih"));
         
         
     }
