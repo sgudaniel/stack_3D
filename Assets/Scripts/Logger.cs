@@ -11,7 +11,7 @@ public class Logger
 
         private Logger()
         {
-            evPublisher.Event.Subscribe(x=> Debug.Log(x));
+            evPublisher.Event.Subscribe(x=> Debug.Log(x.msg));
         }
 
         public static Logger getInstance()

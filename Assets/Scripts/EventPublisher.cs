@@ -8,15 +8,22 @@ public class EventPublisher
 {
 
     private static EventPublisher instance = null; 
-    static Subject<string> EventMsg = new Subject<string>();
-    
-    public IObservable<string> Event { get { return EventMsg; } }
+    private EventModel eventModel = EventModel.getDefaultInstance();
+    static Subject<EventModel> EventMsg = new Subject<EventModel>(); 
+
+    public IObservable<EventModel> Event { get { return EventMsg; } }
 
     private EventPublisher(){
         
         Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0)).
-        Subscribe(x => EventMsg.OnNext("click"));
+        Subscribe(x => clickEvent());
 
+    }
+
+    private void clickEvent()
+    {
+        this.eventModel.msg = "click";
+        EventMsg.OnNext(this.eventModel);
     }
 
     public static EventPublisher getInstance(){
@@ -24,6 +31,11 @@ public class EventPublisher
             if(instance == null) instance = new EventPublisher();
             return instance;
         
+    }
+
+    public static void publish(EventModel ev)
+    {
+        EventMsg.OnNext(ev);
     }
 
 }
