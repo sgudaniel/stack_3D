@@ -48,6 +48,7 @@ public class StartupComponent : MonoBehaviour
     {
         evPublisher.Event.Where(x=> x.msg == "click").Subscribe(_=>{
             this.stackComponent.Add(stackFactory.Create(new Vector3(0,1,0), false));
+            //this.scoreCounterComponent.Increase();
         });
         
         

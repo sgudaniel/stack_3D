@@ -28,7 +28,7 @@ public class ScoreCounterComponent : MonoBehaviour
         this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
-    void Increase()
+    public void Increase()
     {
         int scoreInteger = int.Parse(this.scoreText.text + 1);
         this.scoreText.text = scoreInteger.ToString();
