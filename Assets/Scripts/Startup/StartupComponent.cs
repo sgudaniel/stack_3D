@@ -8,7 +8,7 @@ public class StartupComponent : MonoBehaviour
 {
     
     private ScoreCounterComponent scoreCounterComponent;
-    private List<StackComponent> stackComponent = new List<StackComponent>();
+    private List<StackComponent> stackComponents = new List<StackComponent>();
     private EventPublisher evPublisher = EventPublisher.getInstance();
     private Logger logger = Logger.getInstance();
     private StackFactory stackFactory = new StackFactory();
@@ -31,7 +31,7 @@ public class StartupComponent : MonoBehaviour
 
         this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
            
-        this.stackComponent.Add(stackFactory.Create(new Vector3(0,1,0), false));
+        this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
         //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
 
         this.RegisterEvents();
@@ -47,7 +47,10 @@ public class StartupComponent : MonoBehaviour
     private void RegisterEvents()
     {
         evPublisher.Event.Where(x=> x.msg == "click").Subscribe(_=>{
-            this.stackComponent.Add(stackFactory.Create(new Vector3(0,1,0), false));
+            StackComponent x = this.stackComponents[GameState.CubeIndex];
+            x.stop();
+            GameState.increaseState();
+            this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
             //this.scoreCounterComponent.Increase();
         });
         
