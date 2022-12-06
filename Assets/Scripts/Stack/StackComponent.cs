@@ -15,6 +15,7 @@ public class StackComponent : MonoBehaviour
     private float moveSpeed = 0.5f;
     private float boundary = 4f;
     private float transition = 0f;
+    private bool mustStop = false;
 
 
     public IObservable<Unit> GetObservable
@@ -25,7 +26,8 @@ public class StackComponent : MonoBehaviour
         }
     }
 
-    StackComponent(){
+    StackComponent()
+    {
         this.theSubject = new Subject<Unit>();
 
         // sizeX = new ReactiveProperty<float>(this.transform.localScale.x);
@@ -39,18 +41,22 @@ public class StackComponent : MonoBehaviour
 
     void Update()
     {
-        transition += Time.deltaTime * moveSpeed;
-        
-        var x = Mathf.Sin(transition * boundary);
-        var y  = this.transform.localPosition.y;
-        var z  = this.transform.localPosition.z;
+        if (!mustStop)
+        {
+            transition += Time.deltaTime * moveSpeed;
 
-        move(x,y,z);
+            var x = Mathf.Sin(transition * boundary);
+            var y = this.transform.localPosition.y;
+            var z = this.transform.localPosition.z;
+
+            move(x, y, z);
+        }
+
     }
 
     void Slice(Vector3 sliced)
     {
-        
+
         this.transform.localScale = new Vector3(this.transform.localScale.x - Mathf.Abs(sliced.x - this.transform.position.x),
                                                 this.transform.localScale.y,
                                                 this.transform.localScale.z - Mathf.Abs(sliced.z - this.transform.position.z));
@@ -58,7 +64,7 @@ public class StackComponent : MonoBehaviour
 
     void move(float x, float y, float z)
     {
-        this.transform.localPosition = new Vector3(x,y,z);
+        this.transform.localPosition = new Vector3(x, y, z);
     }
 
     void ChangeColor(Color color)
@@ -71,9 +77,9 @@ public class StackComponent : MonoBehaviour
         this.moveSpeed = ms;
     }
 
-    void drop()
+    public void stop()
     {
-        
+        this.mustStop = true;
     }
     // private void OnMouseDown()
     // {
