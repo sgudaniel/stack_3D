@@ -12,7 +12,7 @@ public class StackComponent : MonoBehaviour
     public IReactiveProperty<float> sizeX { get; private set; }
     public IReadOnlyReactiveProperty<bool> isEmpty { get; private set; }
 
-    private float moveSpeed = 0.5f;
+    private float moveSpeed = 0.3f;
     private float boundary = 4f;
     private float transition = 0f;
     private bool mustStop = false;
@@ -60,6 +60,23 @@ public class StackComponent : MonoBehaviour
         this.transform.localScale = new Vector3(this.transform.localScale.x - Mathf.Abs(sliced.x - this.transform.position.x),
                                                 this.transform.localScale.y,
                                                 this.transform.localScale.z - Mathf.Abs(sliced.z - this.transform.position.z));
+    }
+
+    public void resize(Vector3 pos, Vector3 scale)
+    {
+        this.transform.position = pos;
+        this.transform.localScale = scale;
+        
+    }
+
+    public void CreateRubble(Vector3 pos, Vector3 scale)
+    {
+        
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        go.transform.localPosition = pos;
+        //print(pos);
+        go.transform.localScale = scale;
+        go.AddComponent<Rigidbody>();    
     }
 
     void move(float x, float y, float z)
