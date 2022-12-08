@@ -7,7 +7,7 @@ using System;
 public class EventPublisher
 {
 
-    private static EventPublisher instance = null; 
+    private static EventPublisher instance = null; 
     private EventModel eventModel = EventModel.getDefaultInstance();
     static Subject<EventModel> EventMsg = new Subject<EventModel>(); 
 
