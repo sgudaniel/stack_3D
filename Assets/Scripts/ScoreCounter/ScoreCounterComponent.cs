@@ -26,11 +26,12 @@ public class ScoreCounterComponent : MonoBehaviour
     void Start()
     {
         this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
+        this.scoreText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Increase()
     {
-        int scoreInteger = int.Parse(this.scoreText.text + 1);
+        int scoreInteger = int.Parse(this.scoreText.text) + 1;
         this.scoreText.text = scoreInteger.ToString();
     }
 
