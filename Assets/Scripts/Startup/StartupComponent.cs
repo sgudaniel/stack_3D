@@ -51,7 +51,7 @@ public class StartupComponent : MonoBehaviour
             x.stop();
             GameState.increaseState();
             this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
-            //this.scoreCounterComponent.Increase();
+            this.scoreCounterComponent.Increase();
         });
         
         

@@ -7,7 +7,6 @@ using TMPro;
 
 public class ScoreCounterComponent : MonoBehaviour
 {
-    private Rigidbody rigidbody;
     private Subject<Unit> theSubject;
     private TextMeshProUGUI scoreText;
 
@@ -19,13 +18,13 @@ public class ScoreCounterComponent : MonoBehaviour
         }
     }
 
-    ScoreCounterComponent(){
+    ScoreCounterComponent()
+    {
         this.theSubject = new Subject<Unit>();
     }
 
     void Start()
     {
-        this.rigidbody = this.gameObject.GetComponent<Rigidbody>();
         this.scoreText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
