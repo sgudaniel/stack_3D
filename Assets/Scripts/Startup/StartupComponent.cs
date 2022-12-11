@@ -30,11 +30,13 @@ public class StartupComponent : MonoBehaviour
         var cameraRotation = CameraUtil.inFrontRotation(Camera.main);        
 
         this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
-           
-        this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
-        this.stackComponents[GameState.CubeIndex].stop();
-        GameState.increaseState();
-        this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
+
+        StackComponent firstStack = stackFactory.CreateFirstStack(new Vector3(0,GameState.CurrentCubeHeight,0), false);
+        this.stackComponents.Add(firstStack);
+        
+        GameState.increaseState(firstStack);
+
+        this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false, GameState.getPrevStackLocalScale()));
         //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
 
         this.RegisterEvents();
@@ -50,15 +52,16 @@ public class StartupComponent : MonoBehaviour
     private void RegisterEvents()
     {
         evPublisher.Event.Where(x=> x.msg == "click").Subscribe(_=>{
-            StackComponent x = this.stackComponents[GameState.CubeIndex];
-            StackComponent prev = this.stackComponents[GameState.CubeIndex - 1];
-            x.stop();
-            var t = x.transform;
-            var prevT = prev.transform;
+            StackComponent curStack = this.stackComponents[GameState.CubeIndex];
+            StackComponent prevStack = this.stackComponents[GameState.CubeIndex - 1];
+            curStack.stop();
 
-            var deltaX = Mathf.Abs(prevT.position.x - t.position.x);
-            var middle = prevT.position.x + t.position.x /2;
-            var xpos = middle - (prevT.position.x / 2);
+            var curStackTransform = curStack.transform;
+            var prevStackTransform = prevStack.transform;
+
+            var deltaX = Mathf.Abs(prevStackTransform.position.x - curStackTransform.position.x);
+            var middle = prevStackTransform.position.x + curStackTransform.position.x /2;
+            var xpos = middle - (prevStackTransform.position.x / 2);
             
             GameState.changeStackBounds(new Vector2(GameState.stackBounds.x-  deltaX ,GameState.stackBounds.y));
 
@@ -66,11 +69,12 @@ public class StartupComponent : MonoBehaviour
                 return;
             }
 
-            x.resize(new Vector3(xpos, t.position.y, t.position.z), new Vector3(GameState.stackBounds.x, t.localScale.y, t.localScale.z));
+            curStack.CreateRubble(curStackTransform,deltaX);
+            curStack.resize(new Vector3(xpos, curStackTransform.position.y, curStackTransform.position.z), new Vector3(GameState.stackBounds.x, curStackTransform.localScale.y, curStackTransform.localScale.z));
 
-            x.CreateRubble(new Vector3( (t.position.x > 0)? t.position.x + (t.localScale.x / 2): t.position.x - (t.localScale.x / 2),t.localScale.y, t.localScale.z), new Vector3(deltaX,1,t.localScale.z));
-            GameState.increaseState();
-            this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false));
+            
+            GameState.increaseState(curStack);
+            this.stackComponents.Add(stackFactory.Create(new Vector3(0,GameState.CurrentCubeHeight,0), false, GameState.getPrevStackLocalScale()));
             //this.scoreCounterComponent.Increase();
         });
         

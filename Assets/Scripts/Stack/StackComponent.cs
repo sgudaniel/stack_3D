@@ -69,12 +69,17 @@ public class StackComponent : MonoBehaviour
         
     }
 
-    public void CreateRubble(Vector3 pos, Vector3 scale)
+    public void CreateRubble(Transform sc, float deltaX)
     {
+
+        var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
+
+        var pos = new Vector3( posX ,sc.localScale.y + 0.2f, sc.localScale.z);
+        var scale  = new Vector3(deltaX,1,sc.localScale.z);
         
+
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
         go.transform.localPosition = pos;
-        //print(pos);
         go.transform.localScale = scale;
         go.AddComponent<Rigidbody>();    
     }
@@ -97,6 +102,7 @@ public class StackComponent : MonoBehaviour
     public void stop()
     {
         this.mustStop = true;
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     // private void OnMouseDown()
     // {

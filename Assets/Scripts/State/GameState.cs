@@ -9,21 +9,25 @@ public static class GameState
 
     public static int CubeIndex = 0;
     public static float  CurrentCubeHeight = 0.58f;
-    public static float LastCubeHeight = 0;
+    public static StackComponent PrevStack;
     public static int Score  = 0;
     public static int Combo = 0;
     
     public static Vector2 stackBounds = new Vector2(BOUNDS_SIZE, BOUNDS_SIZE);
 
-    public static void increaseState(){
+    public static void increaseState(StackComponent sc){
         CubeIndex += 1;
         Score += 1;
-        LastCubeHeight = CurrentCubeHeight;
+        PrevStack = sc;
         CurrentCubeHeight += 0.12f;
     }
 
     public static void changeStackBounds(Vector2 sb){
         stackBounds = sb;
+    }
+
+    public static Vector3 getPrevStackLocalScale(){
+        return PrevStack.transform.localScale;
     }
 
 }
