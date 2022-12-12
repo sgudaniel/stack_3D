@@ -81,11 +81,10 @@ public class StartupComponent : MonoBehaviour
                 curStack.resize(new Vector3(xpos, curStackTransform.position.y, curStackTransform.position.z), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, curStackTransform.localScale.z));
 
                 
+                GameState.ReverseStackMove();
                 this.stackComponents.Add(stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
             }
-
-            
 
 
         });

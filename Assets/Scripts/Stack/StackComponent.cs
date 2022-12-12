@@ -48,6 +48,8 @@ public class StackComponent : MonoBehaviour
             var z = this.transform.localPosition.z;
 
             x = Mathf.PingPong(transition * moveSpeed, boundary*2) - boundary;
+            
+            if(GameState.StackReverseMove) x *= -1;
 
             move(x, y, z);
         }

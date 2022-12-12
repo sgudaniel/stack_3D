@@ -7,7 +7,7 @@ public static class GameState
     public const float BOUNDS_SIZE = 1f;
     public const int COMBO_GAIN = 5;
 
-    public const float BOUNDARY = 3f;
+    public const float BOUNDARY = 2f;
 
     
 
@@ -16,6 +16,8 @@ public static class GameState
     private static int _Combo = 0;
     private static float _StackSpeed = 1f;
     private static float  _CurrentCubeHeight = 0.58f;
+    
+    private static bool _StackReverseMove = false;
     private static bool _GameOver = false;
 
     private static StackComponent prevStack;
@@ -32,6 +34,8 @@ public static class GameState
     public static bool GameOver { get => _GameOver;}
     public static StackComponent PrevStack { get => prevStack; set => prevStack = value; }
     public static Vector2 StackBounds { get => _StackBounds;}
+
+    public static bool StackReverseMove { get => _StackReverseMove;}
 
     public static void increaseState(StackComponent sc){
         CubeIndex += 1;
@@ -50,6 +54,10 @@ public static class GameState
 
     public static void GameisOver(){
         _GameOver = true;
+    }
+
+    public static void ReverseStackMove(){
+        _StackReverseMove = !_StackReverseMove;
     }
 
     
