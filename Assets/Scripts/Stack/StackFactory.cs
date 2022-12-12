@@ -8,7 +8,7 @@ public class StackFactory
     {
         var stack = GameObject.Instantiate(PrefabResolver.StackPrefab, position, Quaternion.identity);
         var rigidBody = stack.AddComponent<Rigidbody>();
-         rigidBody.useGravity = mustUseGravity;
+        rigidBody.useGravity = mustUseGravity;
         var stackComponent  = stack.AddComponent<StackComponent>();
         stackComponent.transform.localScale = scale;
 

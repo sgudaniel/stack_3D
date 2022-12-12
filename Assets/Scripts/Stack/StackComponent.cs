@@ -9,11 +9,8 @@ public class StackComponent : MonoBehaviour
     private Rigidbody rigidbody;
     private Subject<Unit> theSubject;
 
-    public IReactiveProperty<float> sizeX { get; private set; }
-    public IReadOnlyReactiveProperty<bool> isEmpty { get; private set; }
-
-    private float moveSpeed = 0.3f;
-    private float boundary = 4f;
+    private float moveSpeed = GameState.StackSpeed;
+    private float boundary = GameState.BOUNDARY;
     private float transition = 0f;
     private bool mustStop = false;
 
@@ -43,11 +40,14 @@ public class StackComponent : MonoBehaviour
     {
         if (!mustStop)
         {
-            transition += Time.deltaTime * moveSpeed;
+            transition += Time.deltaTime;
 
-            var x = Mathf.Sin(transition * boundary);
+            
+            var x = this.transform.localPosition.x;
             var y = this.transform.localPosition.y;
             var z = this.transform.localPosition.z;
+
+            x = Mathf.PingPong(transition * moveSpeed, boundary*2) - boundary;
 
             move(x, y, z);
         }
@@ -105,6 +105,7 @@ public class StackComponent : MonoBehaviour
         this.mustStop = true;
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
+
     public void drop()
     {
         this.GetComponent<Rigidbody>().useGravity = true;
