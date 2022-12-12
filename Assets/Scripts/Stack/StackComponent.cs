@@ -74,14 +74,15 @@ public class StackComponent : MonoBehaviour
 
         var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
 
-        var pos = new Vector3( posX ,sc.localScale.y + 0.2f, sc.localScale.z);
+        var pos = new Vector3( posX ,sc.position.y, sc.position.z);
         var scale  = new Vector3(deltaX,sc.localScale.y,sc.localScale.z);
         
 
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
         go.transform.localPosition = pos;
         go.transform.localScale = scale;
-        go.AddComponent<Rigidbody>();    
+        go.AddComponent<Rigidbody>();   
+        //go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
     }
 
     void move(float x, float y, float z)
