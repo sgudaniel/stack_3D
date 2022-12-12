@@ -105,6 +105,10 @@ public class StackComponent : MonoBehaviour
         this.mustStop = true;
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
+    public void drop()
+    {
+        this.GetComponent<Rigidbody>().useGravity = true;
+    }
     // private void OnMouseDown()
     // {
     //  this.theSubject.OnNext(Unit.Default);
