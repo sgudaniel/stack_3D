@@ -12,7 +12,7 @@ public class StackComponent : MonoBehaviour
     public IReactiveProperty<float> sizeX { get; private set; }
     public IReadOnlyReactiveProperty<bool> isEmpty { get; private set; }
 
-    private float moveSpeed = 0.5f;
+    private float moveSpeed = 0.3f;
     private float boundary = 4f;
     private float transition = 0f;
     private bool mustStop = false;
@@ -62,6 +62,28 @@ public class StackComponent : MonoBehaviour
                                                 this.transform.localScale.z - Mathf.Abs(sliced.z - this.transform.position.z));
     }
 
+    public void resize(Vector3 pos, Vector3 scale)
+    {
+        this.transform.position = pos;
+        this.transform.localScale = scale;
+        
+    }
+
+    public void CreateRubble(Transform sc, float deltaX)
+    {
+
+        var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
+
+        var pos = new Vector3( posX ,sc.localScale.y + 0.2f, sc.localScale.z);
+        var scale  = new Vector3(deltaX,1,sc.localScale.z);
+        
+
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        go.transform.localPosition = pos;
+        go.transform.localScale = scale;
+        go.AddComponent<Rigidbody>();    
+    }
+
     void move(float x, float y, float z)
     {
         this.transform.localPosition = new Vector3(x, y, z);
@@ -80,6 +102,7 @@ public class StackComponent : MonoBehaviour
     public void stop()
     {
         this.mustStop = true;
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     // private void OnMouseDown()
     // {
