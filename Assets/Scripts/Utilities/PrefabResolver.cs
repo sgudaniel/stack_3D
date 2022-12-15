@@ -11,12 +11,14 @@ public class PrefabResolver : MonoBehaviour
     
     private static GameObject stackPrefabStatic;
     private static GameObject scoreCounterPrefabStatic;
+    private static GameObject menuPrefabStatic;
     
 
     void Awake() 
     {
         PrefabResolver.stackPrefabStatic = stackPrefab;        
         PrefabResolver.scoreCounterPrefabStatic = scoreCounterPrefab;
+        PrefabResolver.menuPrefabStatic = menuPrefabStatic;
     }
 
 
@@ -40,5 +42,13 @@ public class PrefabResolver : MonoBehaviour
                 return PrefabResolver.scoreCounterPrefabStatic;
             }
         
+    }
+
+    public static GameObject MennuPrefab
+    {
+        get
+        {
+            return PrefabResolver.menuPrefabStatic;
+        }
     }
 }
