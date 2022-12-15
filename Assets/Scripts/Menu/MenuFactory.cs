@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class MenuFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public MenuComponent Create(Vector3 position, Quaternion rotation)
     {
-        
-    }
+        var menu = GameObject.Instantiate(PrefabResolver.MenuPrefab, position, rotation);
+        var menuComponent = menu.AddComponent<MenuComponent>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return menuComponent;
     }
 }
