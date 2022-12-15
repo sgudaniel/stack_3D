@@ -8,6 +8,8 @@ public class PrefabResolver : MonoBehaviour
     private GameObject stackPrefab;
     [SerializeField]
     private GameObject scoreCounterPrefab;
+    [SerializeField]
+    private GameObject menuPrefab;
     
     private static GameObject stackPrefabStatic;
     private static GameObject scoreCounterPrefabStatic;
@@ -18,7 +20,7 @@ public class PrefabResolver : MonoBehaviour
     {
         PrefabResolver.stackPrefabStatic = stackPrefab;        
         PrefabResolver.scoreCounterPrefabStatic = scoreCounterPrefab;
-        PrefabResolver.menuPrefabStatic = menuPrefabStatic;
+        PrefabResolver.menuPrefabStatic = menuPrefab;
     }
 
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuFactory : MonoBehaviour
+public class MenuFactory
 {
     public MenuComponent Create(Vector3 position, Quaternion rotation)
     {
