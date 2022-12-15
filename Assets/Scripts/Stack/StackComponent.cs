@@ -9,11 +9,8 @@ public class StackComponent : MonoBehaviour
     private Rigidbody rigidbody;
     private Subject<Unit> theSubject;
 
-    public IReactiveProperty<float> sizeX { get; private set; }
-    public IReadOnlyReactiveProperty<bool> isEmpty { get; private set; }
-
-    private float moveSpeed = 0.5f;
-    private float boundary = 4f;
+    private float moveSpeed = GameState.StackSpeed;
+    private float boundary = GameState.BOUNDARY;
     private float transition = 0f;
     private bool mustStop = false;
 
@@ -43,11 +40,16 @@ public class StackComponent : MonoBehaviour
     {
         if (!mustStop)
         {
-            transition += Time.deltaTime * moveSpeed;
+            transition += Time.deltaTime;
 
-            var x = Mathf.Sin(transition * boundary);
+            
+            var x = this.transform.localPosition.x;
             var y = this.transform.localPosition.y;
             var z = this.transform.localPosition.z;
+
+            x = Mathf.PingPong(transition * moveSpeed, boundary*2) - boundary;
+            
+            if(GameState.StackReverseMove) x *= -1;
 
             move(x, y, z);
         }
@@ -60,6 +62,29 @@ public class StackComponent : MonoBehaviour
         this.transform.localScale = new Vector3(this.transform.localScale.x - Mathf.Abs(sliced.x - this.transform.position.x),
                                                 this.transform.localScale.y,
                                                 this.transform.localScale.z - Mathf.Abs(sliced.z - this.transform.position.z));
+    }
+
+    public void resize(Vector3 pos, Vector3 scale)
+    {
+        this.transform.position = pos;
+        this.transform.localScale = scale;
+        
+    }
+
+    public void CreateRubble(Transform sc, float deltaX)
+    {
+
+        var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
+
+        var pos = new Vector3( posX ,sc.position.y, sc.position.z);
+        var scale  = new Vector3(deltaX,sc.localScale.y,sc.localScale.z);
+        
+
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        go.transform.localPosition = pos;
+        go.transform.localScale = scale;
+        go.AddComponent<Rigidbody>();   
+        //go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
     }
 
     void move(float x, float y, float z)
@@ -80,6 +105,12 @@ public class StackComponent : MonoBehaviour
     public void stop()
     {
         this.mustStop = true;
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void drop()
+    {
+        this.GetComponent<Rigidbody>().useGravity = true;
     }
     // private void OnMouseDown()
     // {
