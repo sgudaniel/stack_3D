@@ -24,27 +24,22 @@ public class PrefabResolver : MonoBehaviour
 
     public static GameObject StackPrefab
     {
-        
-            get
-            {
-                return PrefabResolver.stackPrefabStatic;
-            }
-        
-    
+        get
+        {
+            return PrefabResolver.stackPrefabStatic;
+        }
     }
     
 
     public static GameObject ScoreCounterPrefab
     {
-        
-            get
-            {
-                return PrefabResolver.scoreCounterPrefabStatic;
-            }
-        
+        get
+        {
+            return PrefabResolver.scoreCounterPrefabStatic;
+        }
     }
 
-    public static GameObject MennuPrefab
+    public static GameObject MenuPrefab
     {
         get
         {
