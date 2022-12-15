@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using System;
 
-public class MenuCompnent : MonoBehaviour
+public class MenuComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Subject<Unit> theSubject;
+    
+    public IObservable<Unit> GetObservable
     {
-        
+        get
+        {
+            return this.theSubject.AsObservable();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    MenuComponent()
     {
-        
+        this.theSubject = new Subject<Unit>();
     }
 }
