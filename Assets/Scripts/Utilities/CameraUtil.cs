@@ -14,4 +14,9 @@ public static class CameraUtil
         return Quaternion.Euler(cameraRotation.x,cameraRotation.y,cameraRotation.z);
     }
 
+    public static Vector3 increaseHeight(Camera camera){
+        return camera.transform.TransformPoint(Vector3.up * 0.05f);
+    }
+
+
 }
