@@ -41,7 +41,7 @@ public static class GameState
         CubeIndex += 1;
         Score += 1;
         PrevStack = sc;
-        CurrentCubeHeight += 0.12f;
+        CurrentCubeHeight += 0.11f;
     }
 
     public static Vector3 getPrevStackLocalScale(){
