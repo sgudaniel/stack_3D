@@ -23,7 +23,7 @@ public class EventPublisher
     private void ClickEvent()
     {
         
-        this._eventModel.msg = "click";
+        this._eventModel.msg = EventListener_.ClickEventMsg;
         EventMsg.OnNext(this._eventModel);
     }
 
@@ -34,7 +34,7 @@ public class EventPublisher
         
     }
 
-    public static void Publish(EventModel ev)
+    public void Publish(EventModel ev)
     {
         EventMsg.OnNext(ev);
     }

@@ -12,6 +12,11 @@ public class EventListener_ : EventPublisher
 
     private Subject<EventModel> _clickEvent = new Subject<EventModel>();
     public IObservable<EventModel> ClickEvent { get { return _clickEvent; } }
+    public static String ClickEventMsg = "click";
+
+    private Subject<EventModel> _gameoverEvent = new Subject<EventModel>();
+    public IObservable<EventModel> GameOverEvent { get { return _gameoverEvent; } }
+    public static String GameOverEventMsg = "GAME_OVER";
 
     private Subject<EventModel> _allEvent = new Subject<EventModel>();
     public IObservable<EventModel> AllEvent { get { return _allEvent; } }
@@ -21,7 +26,8 @@ public class EventListener_ : EventPublisher
         this.Event.Subscribe(x =>
         {
 
-            if (x.msg == "click") _clickEvent.OnNext(x);
+            if (x.msg == ClickEventMsg) _clickEvent.OnNext(x);
+            if (x.msg == GameOverEventMsg) _clickEvent.OnNext(x);
 
             _allEvent.OnNext(x);
 
