@@ -7,13 +7,13 @@ using UniRx;
 public class StartupComponent : MonoBehaviour
 {
 
-    private ScoreCounterComponent scoreCounterComponent;
-    private List<StackComponent> stackComponents = new List<StackComponent>();
-    private EventPublisher evPublisher = EventPublisher.getInstance();
-    private Logger logger = Logger.getInstance();
-    private StackFactory stackFactory = new StackFactory();
-
-    private Subject<Unit> theSubject = new Subject<Unit>();
+    private static EventPublisher _eventPublisher = EventPublisher.getInstance();
+    private EventListener_ _evListener = EventListener_.getInstance();
+    private ScoreCounterComponent _scoreCounterComponent;
+    private List<StackComponent> _stackComponents = new List<StackComponent>();
+    
+    private Logger _logger = Logger.getInstance();
+    private StackFactory _stackFactory = new StackFactory();
 
 
     StartupComponent()
@@ -29,14 +29,14 @@ public class StartupComponent : MonoBehaviour
         var inFrontOfCamera = CameraUtil.inFront(Camera.main);
         var cameraRotation = CameraUtil.inFrontRotation(Camera.main);
 
-        this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
+        this._scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
 
-        StackComponent firstStack = stackFactory.CreateFirstStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false);
-        this.stackComponents.Add(firstStack);
+        StackComponent firstStack = _stackFactory.CreateFirstStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false);
+        this._stackComponents.Add(firstStack);
 
         GameState.increaseState(firstStack);
 
-        this.stackComponents.Add(stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+        this._stackComponents.Add(_stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
         //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
 
         this.RegisterEvents();
@@ -51,10 +51,11 @@ public class StartupComponent : MonoBehaviour
 
     private void RegisterEvents()
     {
-        evPublisher.Event.Where(x => x.msg == "click" && !GameState.GameOver).Subscribe(_ =>
+        _evListener.ClickEvent.Where(x => !GameState.GameOver).Subscribe(_ =>
         {
-            StackComponent curStack = this.stackComponents[GameState.CubeIndex];
-            StackComponent prevStack = this.stackComponents[GameState.CubeIndex - 1];
+            
+            StackComponent curStack = this._stackComponents[GameState.CubeIndex];
+            StackComponent prevStack = this._stackComponents[GameState.CubeIndex - 1];
             
 
             var curStackTransform = curStack.transform;
@@ -67,7 +68,7 @@ public class StartupComponent : MonoBehaviour
             GameState.changeStackBounds(new Vector2(GameState.StackBounds.x - deltaX, GameState.StackBounds.y));
 
             GameState.increaseState(curStack);
-            this.scoreCounterComponent.Increase();
+            this._scoreCounterComponent.Increase();
 
             if (GameState.StackBounds.x <= 0)
             {
@@ -82,7 +83,7 @@ public class StartupComponent : MonoBehaviour
 
                 
                 GameState.ReverseStackMove();
-                this.stackComponents.Add(stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+                this._stackComponents.Add(_stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
             }
 

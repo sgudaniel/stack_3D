@@ -6,12 +6,12 @@ using System;
 
 public class Logger
 {
-        private static Logger instance = null;
-        private EventPublisher evPublisher = EventPublisher.getInstance();
+        private static Logger instance = null;
+        private EventListener_ _evListener = EventListener_.getInstance();
 
         private Logger()
         {
-            evPublisher.Event.Subscribe(x=> Debug.Log(x.msg));
+            _evListener.AllEvent.Subscribe(x=> Debug.Log(x.msg));
         }
 
         public static Logger getInstance()
