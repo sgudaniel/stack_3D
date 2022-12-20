@@ -7,12 +7,12 @@ using UniRx;
 public class StartupComponent : MonoBehaviour
 {
 
-    private static EventPublisher _eventPublisher = EventPublisher.getInstance();
-    private EventListener_ _evListener = EventListener_.getInstance();
+    private static EventPublisher _eventPublisher = EventPublisher.GetInstance();
+    private EventListener_ _evListener = EventListener_.GetInstance();
     private ScoreCounterComponent _scoreCounterComponent;
     private List<StackComponent> _stackComponents = new List<StackComponent>();
     
-    private Logger _logger = Logger.getInstance();
+    private Logger _logger = Logger.GetInstance();
     private StackFactory _stackFactory = new StackFactory();
 
 
@@ -72,14 +72,14 @@ public class StartupComponent : MonoBehaviour
 
             if (GameState.StackBounds.x <= 0)
             {
-                curStack.drop();
+                curStack.Drop();
                 GameState.GameisOver();
             }
             else
             {
-                curStack.stop();
+                curStack.Stop();
                 curStack.CreateRubble(curStackTransform, deltaX);
-                curStack.resize(new Vector3(xpos, curStackTransform.position.y, curStackTransform.position.z), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, curStackTransform.localScale.z));
+                curStack.Resize(new Vector3(xpos, curStackTransform.position.y, curStackTransform.position.z), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, curStackTransform.localScale.z));
 
                 
                 GameState.ReverseStackMove();

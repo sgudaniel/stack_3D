@@ -9,10 +9,10 @@ public class StackComponent : MonoBehaviour
     private Rigidbody rigidbody;
     private Subject<Unit> theSubject;
 
-    private float moveSpeed = GameState.StackSpeed;
-    private float boundary = GameState.BOUNDARY;
-    private float transition = 0f;
-    private bool mustStop = false;
+    private float _moveSpeed = GameState.StackSpeed;
+    private float _boundary = GameState.BOUNDARY;
+    private float _transition = 0f;
+    private bool _mustStop = false;
 
 
     public IObservable<Unit> GetObservable
@@ -38,20 +38,20 @@ public class StackComponent : MonoBehaviour
 
     void Update()
     {
-        if (!mustStop)
+        if (!_mustStop)
         {
-            transition += Time.deltaTime;
+            _transition += Time.deltaTime;
 
             
             var x = this.transform.localPosition.x;
             var y = this.transform.localPosition.y;
             var z = this.transform.localPosition.z;
 
-            x = Mathf.PingPong(transition * moveSpeed, boundary*2) - boundary;
+            x = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
             
             if(GameState.StackReverseMove) x *= -1;
 
-            move(x, y, z);
+            Move(x, y, z);
         }
 
     }
@@ -64,7 +64,7 @@ public class StackComponent : MonoBehaviour
                                                 this.transform.localScale.z - Mathf.Abs(sliced.z - this.transform.position.z));
     }
 
-    public void resize(Vector3 pos, Vector3 scale)
+    public void Resize(Vector3 pos, Vector3 scale)
     {
         this.transform.position = pos;
         this.transform.localScale = scale;
@@ -87,7 +87,7 @@ public class StackComponent : MonoBehaviour
         //go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
     }
 
-    void move(float x, float y, float z)
+    void Move(float x, float y, float z)
     {
         this.transform.localPosition = new Vector3(x, y, z);
     }
@@ -97,18 +97,18 @@ public class StackComponent : MonoBehaviour
         this.gameObject.GetComponent<Renderer>().material.color = color;
     }
 
-    void increaseMoveSpeed(float ms)
+    void Increase_MoveSpeed(float ms)
     {
-        this.moveSpeed = ms;
+        this._moveSpeed = ms;
     }
 
-    public void stop()
+    public void Stop()
     {
-        this.mustStop = true;
+        this._mustStop = true;
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
-    public void drop()
+    public void Drop()
     {
         this.GetComponent<Rigidbody>().useGravity = true;
     }

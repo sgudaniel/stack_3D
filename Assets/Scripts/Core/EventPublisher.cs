@@ -16,25 +16,25 @@ public class EventPublisher
 
         if(_instance != null) return;
         
-        Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0)).Subscribe(x => clickEvent());
+        Observable.EveryUpdate().Where(_ => Input.GetMouseButtonDown(0)).Subscribe(x => ClickEvent());
 
     }
 
-    private void clickEvent()
+    private void ClickEvent()
     {
         
         this._eventModel.msg = "click";
         EventMsg.OnNext(this._eventModel);
     }
 
-    public static EventPublisher getInstance(){
+    public static EventPublisher GetInstance(){
         
             if(_instance == null) _instance = new EventPublisher();
             return _instance;
         
     }
 
-    public static void publish(EventModel ev)
+    public static void Publish(EventModel ev)
     {
         EventMsg.OnNext(ev);
     }

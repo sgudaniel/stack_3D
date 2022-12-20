@@ -21,7 +21,7 @@ public class StackFactory
         var rigidBody = stack.AddComponent<Rigidbody>();
          rigidBody.useGravity = mustUseGravity;
         var stackComponent  = stack.AddComponent<StackComponent>();
-        stackComponent.stop();
+        stackComponent.Stop();
 
         return stackComponent;
     }

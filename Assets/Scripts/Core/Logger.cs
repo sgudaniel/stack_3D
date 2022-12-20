@@ -6,19 +6,19 @@ using System;
 
 public class Logger
 {
-        private static Logger instance = null;
-        private EventListener_ _evListener = EventListener_.getInstance();
+        private static Logger _instance = null;
+        private EventListener_ _evListener = EventListener_.GetInstance();
 
         private Logger()
         {
             _evListener.AllEvent.Subscribe(x=> Debug.Log(x.msg));
         }
 
-        public static Logger getInstance()
+        public static Logger GetInstance()
         {
         
-            if(instance == null) instance = new Logger();
-            return instance;
+            if(_instance == null) _instance = new Logger();
+            return _instance;
         
         }
 

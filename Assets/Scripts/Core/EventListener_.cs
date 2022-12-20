@@ -8,7 +8,7 @@ public class EventListener_ : EventPublisher
 {
 
     private static EventListener_ _instance = null;
-    private static EventPublisher _eventPublisher = EventPublisher.getInstance();
+    private static EventPublisher _eventPublisher = EventPublisher.GetInstance();
 
     private Subject<EventModel> _clickEvent = new Subject<EventModel>();
     public IObservable<EventModel> ClickEvent { get { return _clickEvent; } }
@@ -34,7 +34,7 @@ public class EventListener_ : EventPublisher
 
     }
 
-    public static EventListener_ getInstance()
+    public static EventListener_ GetInstance()
     {
 
         if (_instance == null) EventListener_._instance = new EventListener_();

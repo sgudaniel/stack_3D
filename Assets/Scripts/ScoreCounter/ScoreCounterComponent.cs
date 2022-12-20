@@ -7,31 +7,31 @@ using TMPro;
 
 public class ScoreCounterComponent : MonoBehaviour
 {
-    private Subject<Unit> theSubject;
-    private TextMeshProUGUI scoreText;
+    private Subject<Unit> _theSubject;
+    private TextMeshProUGUI _scoreText;
 
     public IObservable<Unit> GetObservable
     {
         get
         {
-            return this.theSubject.AsObservable();
+            return this._theSubject.AsObservable();
         }
     }
 
     ScoreCounterComponent()
     {
-        this.theSubject = new Subject<Unit>();
+        this._theSubject = new Subject<Unit>();
     }
 
     void Start()
     {
-        this.scoreText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        this._scoreText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void Increase()
     {
-        int scoreInteger = int.Parse(this.scoreText.text) + 1;
-        this.scoreText.text = scoreInteger.ToString();
+        int scoreInteger = int.Parse(this._scoreText.text) + 1;
+        this._scoreText.text = scoreInteger.ToString();
     }
 
 }
