@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StackFactory
 {
-    public StackComponent Create(Vector3 position, bool mustUseGravity, Vector3 scale)
+    public StackComponent CreateMoveableStack(Vector3 position, bool mustUseGravity, Vector3 scale)
     {
         var stack = GameObject.Instantiate(PrefabResolver.StackPrefab, position, Quaternion.identity);
         var rigidBody = stack.AddComponent<Rigidbody>();
@@ -15,7 +15,7 @@ public class StackFactory
         return stackComponent;
     }
 
-    public StackComponent CreateFirstStack(Vector3 position, bool mustUseGravity)
+    public StackComponent CreateIMmoveableStack(Vector3 position, bool mustUseGravity)
     {
         var stack = GameObject.Instantiate(PrefabResolver.StackPrefab, position, Quaternion.identity);
         var rigidBody = stack.AddComponent<Rigidbody>();

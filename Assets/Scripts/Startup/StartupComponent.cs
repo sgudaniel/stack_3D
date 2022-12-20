@@ -31,12 +31,12 @@ public class StartupComponent : MonoBehaviour
 
         this._scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
 
-        StackComponent firstStack = _stackFactory.CreateFirstStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false);
+        StackComponent firstStack = _stackFactory.CreateIMmoveableStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false);
         this._stackComponents.Add(firstStack);
 
         GameState.increaseState(firstStack);
 
-        this._stackComponents.Add(_stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+        this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
         //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
 
         this.RegisterEvents();
@@ -83,7 +83,7 @@ public class StartupComponent : MonoBehaviour
 
                 
                 GameState.ReverseStackMove();
-                this._stackComponents.Add(_stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+                this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
             }
 
