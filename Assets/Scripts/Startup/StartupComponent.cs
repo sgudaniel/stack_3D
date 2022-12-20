@@ -26,8 +26,8 @@ public class StartupComponent : MonoBehaviour
     {
         var scoreCounterFactory = new ScoreCounterFactory();
 
-        var inFrontOfCamera = CameraUtil.inFront(Camera.main);
-        var cameraRotation = CameraUtil.inFrontRotation(Camera.main);
+        var inFrontOfCamera = CameraUtil.InFront(Camera.main);
+        var cameraRotation = CameraUtil.InFrontRotation(Camera.main);
 
         this._scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
 

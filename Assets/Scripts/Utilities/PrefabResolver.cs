@@ -5,9 +5,9 @@ using UnityEngine;
 public class PrefabResolver : MonoBehaviour
 {
     [SerializeField]
-    private GameObject stackPrefab;
+    private GameObject _stackPrefab;
     [SerializeField]
-    private GameObject scoreCounterPrefab;
+    private GameObject _scoreCounterPrefab;
     
     private static GameObject stackPrefabStatic;
     private static GameObject scoreCounterPrefabStatic;
@@ -15,8 +15,8 @@ public class PrefabResolver : MonoBehaviour
 
     void Awake() 
     {
-        PrefabResolver.stackPrefabStatic = stackPrefab;        
-        PrefabResolver.scoreCounterPrefabStatic = scoreCounterPrefab;
+        PrefabResolver.stackPrefabStatic = _stackPrefab;        
+        PrefabResolver.scoreCounterPrefabStatic = _scoreCounterPrefab;
     }
 
 
