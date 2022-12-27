@@ -18,7 +18,11 @@ public static class GameState
     private static float  _currentCubeHeight = 0.58f;
     
     private static bool _stackReverseMove = false;
+
+    private static bool _zStackMove = false;
     private static bool _gameOver = false;
+
+    
 
     private static StackComponent _prevStack;
 
@@ -36,6 +40,8 @@ public static class GameState
     public static Vector2 StackBounds { get => _stackBounds;}
 
     public static bool StackReverseMove { get => _stackReverseMove;}
+
+    public static bool ZStackMove { get => _zStackMove;}
 
     public static void increaseState(StackComponent sc){
         CubeIndex += 1;
@@ -58,6 +64,10 @@ public static class GameState
 
     public static void ReverseStackMove(){
         _stackReverseMove = !_stackReverseMove;
+    }
+
+    public static void StackMoveZ(){
+        _zStackMove = !_zStackMove;
     }
 
     

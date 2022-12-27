@@ -47,9 +47,16 @@ public class StackComponent : MonoBehaviour
             var y = this.transform.localPosition.y;
             var z = this.transform.localPosition.z;
 
-            x = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
-            
-            if(GameState.StackReverseMove) x *= -1;
+            if(GameState.ZStackMove){
+                x = 0;
+                z = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
+                if(GameState.StackReverseMove) z *= -1;
+            } 
+            else{
+                z = 0;
+                x = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
+                if(GameState.StackReverseMove) x *= -1;
+            } 
 
             Move(x, y, z);
         }
@@ -71,13 +78,29 @@ public class StackComponent : MonoBehaviour
         
     }
 
-    public void CreateRubble(Transform sc, float deltaX)
+    public void CreateRubbleDeltaX(Transform sc, float deltaX)
     {
 
         var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
 
         var pos = new Vector3( posX ,sc.position.y, sc.position.z);
         var scale  = new Vector3(deltaX,sc.localScale.y,sc.localScale.z);
+        
+
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        go.transform.localPosition = pos;
+        go.transform.localScale = scale;
+        go.AddComponent<Rigidbody>();   
+        go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
+    }
+
+    public void CreateRubbleDeltaZ(Transform sc, float deltaZ)
+    {
+
+        var posZ = (sc.position.z > 0)? sc.position.z + (sc.localScale.z / 2): sc.position.z - (sc.localScale.z / 2);
+
+        var pos = new Vector3( sc.position.x ,sc.position.y, posZ);
+        var scale  = new Vector3(sc.localScale.x,sc.localScale.y,deltaZ);
         
 
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
