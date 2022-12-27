@@ -62,15 +62,20 @@ public class StartupComponent : MonoBehaviour
             var prevStackTransform = prevStack.transform;
 
             var deltaX = Mathf.Abs(prevStackTransform.position.x - curStackTransform.position.x);
-            var middle = prevStackTransform.position.x + curStackTransform.position.x / 2;
-            var xpos = middle - (prevStackTransform.position.x / 2);
+            var deltaZ = Mathf.Abs(prevStackTransform.position.z - curStackTransform.position.z);
 
-            GameState.changeStackBounds(new Vector2(GameState.StackBounds.x - deltaX, GameState.StackBounds.y));
+            var middleX = prevStackTransform.position.x + curStackTransform.position.x / 2;
+            var middleZ = prevStackTransform.position.z + curStackTransform.position.z / 2;
+
+            var xpos = middleX - (prevStackTransform.position.x / 2);
+            var zpos = middleZ - (prevStackTransform.position.z / 2);
+
+            GameState.changeStackBounds(new Vector2(GameState.StackBounds.x - deltaX, GameState.StackBounds.y - deltaZ));
 
             GameState.increaseState(curStack);
             this._scoreCounterComponent.Increase();
 
-            if (GameState.StackBounds.x <= 0)
+            if (GameState.StackBounds.x <= 0 || GameState.StackBounds.y <= 0)
             {
                 curStack.Drop();
                 GameState.GameisOver();
@@ -78,11 +83,16 @@ public class StartupComponent : MonoBehaviour
             else
             {
                 curStack.Stop();
-                curStack.CreateRubble(curStackTransform, deltaX);
-                curStack.Resize(new Vector3(xpos, curStackTransform.position.y, curStackTransform.position.z), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, curStackTransform.localScale.z));
+                
+                if(GameState.ZStackMove) curStack.CreateRubbleDeltaZ(curStackTransform, deltaZ);
+                else curStack.CreateRubbleDeltaX(curStackTransform, deltaX);
+
+                curStack.Resize(new Vector3(xpos, curStackTransform.position.y, zpos), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, GameState.StackBounds.y));
 
                 
-                GameState.ReverseStackMove();
+                if(GameState.ZStackMove) GameState.ReverseStackMove();
+                GameState.StackMoveZ();
+                
                 this._stackComponents.Add(_stackFactory.Create(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
             }
