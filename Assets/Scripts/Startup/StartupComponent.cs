@@ -84,6 +84,7 @@ public class StartupComponent : MonoBehaviour
                 
                 GameState.ReverseStackMove();
                 this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+                Camera.main.transform.position = CameraUtil.increaseHeight(Camera.main);
                 
             }
 
