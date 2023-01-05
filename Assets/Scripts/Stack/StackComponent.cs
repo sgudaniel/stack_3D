@@ -92,6 +92,8 @@ public class StackComponent : MonoBehaviour
         go.transform.localScale = scale;
         go.AddComponent<Rigidbody>();
         go.GetComponent<Renderer>().material = mat;
+        
+        Destroy(go, 2);
     }
 
     public void CreateRubbleDeltaZ(Transform sc, float deltaZ, Material mat)
@@ -108,6 +110,8 @@ public class StackComponent : MonoBehaviour
         go.transform.localScale = scale;
         go.AddComponent<Rigidbody>();   
         go.GetComponent<Renderer>().material = mat;
+
+        Destroy(go, 2);
     }
 
     void Move(float x, float y, float z)
