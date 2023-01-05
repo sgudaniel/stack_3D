@@ -8,7 +8,7 @@ public class StartupComponent : MonoBehaviour
 {
 
     private ScoreCounterComponent scoreCounterComponent;
-    private MenuComponent menuComponent;
+    //private MenuComponent menuComponent;
     private List<StackComponent> stackComponents = new List<StackComponent>();
     private EventPublisher evPublisher = EventPublisher.getInstance();
     private Logger logger = Logger.getInstance();
@@ -26,13 +26,13 @@ public class StartupComponent : MonoBehaviour
     void Start()
     {
         var scoreCounterFactory = new ScoreCounterFactory();
-        var menuFactory = new MenuFactory();
+        //var menuFactory = new MenuFactory();
 
         var inFrontOfCamera = CameraUtil.inFront(Camera.main);
         var cameraRotation = CameraUtil.inFrontRotation(Camera.main);
 
         this.scoreCounterComponent = scoreCounterFactory.Create(inFrontOfCamera, cameraRotation);
-        this.menuComponent = menuFactory.Create(inFrontOfCamera, cameraRotation);
+        //this.menuComponent = menuFactory.Create(inFrontOfCamera, cameraRotation);
 
         StackComponent firstStack = stackFactory.CreateFirstStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false);
         this.stackComponents.Add(firstStack);

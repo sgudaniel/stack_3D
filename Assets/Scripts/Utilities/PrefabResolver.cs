@@ -8,19 +8,15 @@ public class PrefabResolver : MonoBehaviour
     private GameObject stackPrefab;
     [SerializeField]
     private GameObject scoreCounterPrefab;
-    [SerializeField]
-    private GameObject menuPrefab;
-    
+
     private static GameObject stackPrefabStatic;
     private static GameObject scoreCounterPrefabStatic;
-    private static GameObject menuPrefabStatic;
-    
+
 
     void Awake() 
     {
-        PrefabResolver.stackPrefabStatic = stackPrefab;        
+        PrefabResolver.stackPrefabStatic = stackPrefab;
         PrefabResolver.scoreCounterPrefabStatic = scoreCounterPrefab;
-        PrefabResolver.menuPrefabStatic = menuPrefab;
     }
 
 
@@ -38,14 +34,6 @@ public class PrefabResolver : MonoBehaviour
         get
         {
             return PrefabResolver.scoreCounterPrefabStatic;
-        }
-    }
-
-    public static GameObject MenuPrefab
-    {
-        get
-        {
-            return PrefabResolver.menuPrefabStatic;
         }
     }
 }
