@@ -15,11 +15,11 @@ public static class CameraUtil
     }
 
     public static Vector3 increaseHeight(Camera camera){
-        return camera.transform.TransformPoint(Vector3.up * 0.05f);
+        return camera.transform.TransformPoint(Vector3.up * 0.038f);
     }
 
     public static Vector3 setHeight(Camera camera){
-        return camera.transform.TransformPoint(Vector3.up * 0.02f);
+        return camera.transform.TransformPoint(Vector3.up);
     }
 
 

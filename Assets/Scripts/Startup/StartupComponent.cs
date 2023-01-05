@@ -95,7 +95,9 @@ public class StartupComponent : MonoBehaviour
                 
                 this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
-                Camera.main.transform.position = CameraUtil.increaseHeight(Camera.main);
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, GameState.CurrentCubeHeight + 0.7f, Camera.main.transform.position.z);
+
+                //Camera.main.transform.position = CameraUtil.setHeight(Camera.main, GameState.CurrentCubeHeight);
             }
 
 
