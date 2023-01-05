@@ -32,7 +32,7 @@ public static class GameState
 
     public static int CubeIndex { get => _cubeIndex; set => _cubeIndex = value; }
     public static int Score { get => _score; set => _score = value; }
-    public static int Combo { get => _combo; set => _combo = value; }
+    public static int Combo { get => _combo;}
     public static float StackSpeed { get => _stackSpeed; set => _stackSpeed = value; }
     public static float CurrentCubeHeight { get => _currentCubeHeight; set => _currentCubeHeight = value; }
     public static bool GameOver { get => _gameOver;}
@@ -68,6 +68,13 @@ public static class GameState
 
     public static void StackMoveZ(){
         _zStackMove = !_zStackMove;
+    }
+
+    public static void IncreaseCombo(){
+        _combo ++;
+    }
+    public static void ResetCombo(){
+        _combo = 0;
     }
 
     
