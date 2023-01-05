@@ -9,6 +9,8 @@ public static class GameState
 
     public const float BOUNDARY = 2f;
 
+    public const float COMBO_GAIN_BONUS = 0.02f;
+
     
 
     private static int _cubeIndex = 0;
@@ -52,6 +54,10 @@ public static class GameState
 
     public static Vector3 getPrevStackLocalScale(){
         return PrevStack.transform.localScale;
+    }
+
+    public static Vector3 getPrevStackLocalPosition(){
+        return PrevStack.transform.localPosition;
     }
 
     public static void changeStackBounds(Vector2 sb){

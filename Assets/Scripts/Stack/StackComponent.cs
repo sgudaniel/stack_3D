@@ -48,12 +48,12 @@ public class StackComponent : MonoBehaviour
             var z = this.transform.localPosition.z;
 
             if(GameState.ZStackMove){
-                x = 0;
+                x = GameState.getPrevStackLocalPosition().x;
                 z = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
                 if(GameState.StackReverseMove) z *= -1;
             } 
             else{
-                z = 0;
+                z = GameState.getPrevStackLocalPosition().z;
                 x = Mathf.PingPong(_transition * _moveSpeed, _boundary*2) - _boundary;
                 if(GameState.StackReverseMove) x *= -1;
             } 

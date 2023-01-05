@@ -49,6 +49,20 @@ public class StartupComponent : MonoBehaviour
 
     }
 
+    void combo_logic(Vector2 prevStackBound)
+    {
+            if(prevStackBound.x == GameState.StackBounds.x && prevStackBound.y == GameState.StackBounds.y)
+            {
+                GameState.IncreaseCombo();
+
+                if(GameState.Combo == GameState.COMBO_GAIN)
+                {
+                    GameState.changeStackBounds(new Vector2(GameState.StackBounds.x + GameState.COMBO_GAIN_BONUS, GameState.StackBounds.y + GameState.COMBO_GAIN_BONUS));
+                    GameState.ResetCombo();
+                }
+            }
+    }
+
     private void RegisterEvents()
     {
         _evListener.ClickEvent.Where(x => !GameState.GameOver).Subscribe(_ =>
@@ -57,7 +71,6 @@ public class StartupComponent : MonoBehaviour
             StackComponent curStack = this._stackComponents[GameState.CubeIndex];
             StackComponent prevStack = this._stackComponents[GameState.CubeIndex - 1];
             
-
             var curStackTransform = curStack.transform;
             var prevStackTransform = prevStack.transform;
 
@@ -67,10 +80,11 @@ public class StartupComponent : MonoBehaviour
             var middleX = (prevStackTransform.position.x + curStackTransform.position.x) / 2;
             var middleZ = (prevStackTransform.position.z + curStackTransform.position.z) / 2;
 
-            var xpos = middleX - (prevStackTransform.position.x / 2);
-            var zpos = middleZ - (prevStackTransform.position.z / 2);
+            Vector2 prevStackBound = GameState.StackBounds;
 
             GameState.changeStackBounds(new Vector2(GameState.StackBounds.x - deltaX, GameState.StackBounds.y - deltaZ));
+
+            combo_logic(prevStackBound);
 
             GameState.increaseState(curStack);
             this._scoreCounterComponent.Increase();
@@ -80,20 +94,22 @@ public class StartupComponent : MonoBehaviour
                 curStack.Drop();
                 GameState.GameisOver();
             }
+
             else
             {
+
                 curStack.Stop();
                 
                 if(GameState.ZStackMove) curStack.CreateRubbleDeltaZ(curStackTransform, deltaZ, curStack.getMaterial());
                 else curStack.CreateRubbleDeltaX(curStackTransform, deltaX, curStack.getMaterial());
 
-                curStack.Resize(new Vector3(xpos, curStackTransform.position.y, zpos), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, GameState.StackBounds.y));
+                curStack.Resize(new Vector3(middleX, curStackTransform.position.y, middleZ), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, GameState.StackBounds.y));
 
                 
                 if(GameState.ZStackMove) GameState.ReverseStackMove();
                 GameState.StackMoveZ();
                 
-                this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
+                this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(0, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
                 
                 Camera.main.transform.position = CameraUtil.increaseHeight(Camera.main);
             }
