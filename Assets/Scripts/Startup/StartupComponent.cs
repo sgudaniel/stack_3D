@@ -64,8 +64,8 @@ public class StartupComponent : MonoBehaviour
             var deltaX = Mathf.Abs(prevStackTransform.position.x - curStackTransform.position.x);
             var deltaZ = Mathf.Abs(prevStackTransform.position.z - curStackTransform.position.z);
 
-            var middleX = prevStackTransform.position.x + curStackTransform.position.x / 2;
-            var middleZ = prevStackTransform.position.z + curStackTransform.position.z / 2;
+            var middleX = (prevStackTransform.position.x + curStackTransform.position.x) / 2;
+            var middleZ = (prevStackTransform.position.z + curStackTransform.position.z) / 2;
 
             var xpos = middleX - (prevStackTransform.position.x / 2);
             var zpos = middleZ - (prevStackTransform.position.z / 2);
@@ -84,8 +84,8 @@ public class StartupComponent : MonoBehaviour
             {
                 curStack.Stop();
                 
-                if(GameState.ZStackMove) curStack.CreateRubbleDeltaZ(curStackTransform, deltaZ);
-                else curStack.CreateRubbleDeltaX(curStackTransform, deltaX);
+                if(GameState.ZStackMove) curStack.CreateRubbleDeltaZ(curStackTransform, deltaZ, curStack.getMaterial());
+                else curStack.CreateRubbleDeltaX(curStackTransform, deltaX, curStack.getMaterial());
 
                 curStack.Resize(new Vector3(xpos, curStackTransform.position.y, zpos), new Vector3(GameState.StackBounds.x, curStackTransform.localScale.y, GameState.StackBounds.y));
 

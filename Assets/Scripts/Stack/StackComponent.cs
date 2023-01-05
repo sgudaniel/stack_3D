@@ -78,7 +78,7 @@ public class StackComponent : MonoBehaviour
         
     }
 
-    public void CreateRubbleDeltaX(Transform sc, float deltaX)
+    public void CreateRubbleDeltaX(Transform sc, float deltaX, Material mat)
     {
 
         var posX = (sc.position.x > 0)? sc.position.x + (sc.localScale.x / 2): sc.position.x - (sc.localScale.x / 2);
@@ -90,11 +90,11 @@ public class StackComponent : MonoBehaviour
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
         go.transform.localPosition = pos;
         go.transform.localScale = scale;
-        go.AddComponent<Rigidbody>();   
-        go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
+        go.AddComponent<Rigidbody>();
+        go.GetComponent<Renderer>().material = mat;
     }
 
-    public void CreateRubbleDeltaZ(Transform sc, float deltaZ)
+    public void CreateRubbleDeltaZ(Transform sc, float deltaZ, Material mat)
     {
 
         var posZ = (sc.position.z > 0)? sc.position.z + (sc.localScale.z / 2): sc.position.z - (sc.localScale.z / 2);
@@ -107,7 +107,7 @@ public class StackComponent : MonoBehaviour
         go.transform.localPosition = pos;
         go.transform.localScale = scale;
         go.AddComponent<Rigidbody>();   
-        //go.GetComponent<Renderer>().material.color =  new Color(0, 204, 102);
+        go.GetComponent<Renderer>().material = mat;
     }
 
     void Move(float x, float y, float z)
@@ -134,6 +134,11 @@ public class StackComponent : MonoBehaviour
     public void Drop()
     {
         this.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public Material getMaterial()
+    {
+        return this.GetComponent<Renderer>().material;
     }
     // private void OnMouseDown()
     // {
