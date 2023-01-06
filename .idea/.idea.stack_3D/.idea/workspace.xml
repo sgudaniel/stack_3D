@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7ef5178-0873-4cb6-85b7-8d5382497d00" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="scoreCounter" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://F:/stack_3D/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/StartupComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ScoreCounter/ScoreCounterComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/PrefabResolverMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Startup/StartupComponentMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Menu/MenuFactory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/PrefabResolver.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Menu/MenuComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Startup/StartupComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/MainMenu.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="2I1VgfbVjMnbVBApqNYBIfWr7T0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7ef5178-0873-4cb6-85b7-8d5382497d00" name="Default Changelist" comment="" />
+      <created>1669349215159</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669349215159</updated>
+      <workItem from="1669349268316" duration="2279000" />
+      <workItem from="1669950803228" duration="6613000" />
+      <workItem from="1670551168399" duration="2991000" />
+      <workItem from="1671102285101" duration="7536000" />
+      <workItem from="1671152887809" duration="2216000" />
+      <workItem from="1671592183088" duration="725000" />
+      <workItem from="1672913991216" duration="7268000" />
+      <workItem from="1672966925902" duration="3348000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Increase() function block in ScoreCounterComponent.cs. Line 31">
+      <created>1669953108201</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669953108202</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Score Counter Feature works.">
+      <created>1670557178502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670557178502</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Uncommanded this.scoreCounterComponent.Increase(); in ScoreCounterComponent.cs line 54. To enable the score counter feature.">
+      <created>1670557639652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670557639652</updated>
+    </task>
+    <task id="LOCAL-00004" summary="pushed uncommitted files">
+      <created>1671102604143</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671102604143</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Menu prefab">
+      <created>1671108214834</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671108214834</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added MenuComponent.cs and MenuFactory.cs">
+      <created>1671109205840</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671109205840</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Declared menuPrefabStatic in PrefabResolver.cs.">
+      <created>1671109356285</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671109356285</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Declared menuPrefabStatic GameObject variable in PrefabResolver.cs.">
+      <created>1671109709916</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671109709916</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated MenuComponent.cs. Added Subject variable and IObservable function block.">
+      <created>1671111222248</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671111222248</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated MenuFactory.cs. Declared MenuComponent.">
+      <created>1671114314585</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671114314585</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Re-modified MenuFactory.cs and PrefabResolver.cs.&#10;&#10;Fixed MenuFactory.cs format and declared menuPrefab in PrefabResolver.cs.">
+      <created>1671114820914</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671114820914</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Configured menuComponent in StartupComponent.cs.">
+      <created>1671117846690</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671117846690</updated>
+    </task>
+    <task id="LOCAL-00013" summary="removed main menu related files">
+      <created>1672926486275</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672926486275</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Main menu created, and can redirect to the main game scene when the &quot;Play&quot; button is clicked">
+      <created>1672968797821</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1672968797821</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added QuitGame() function block from line 17 to 21 in MainMenu.cs">
+      <created>1672969469450</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1672969469450</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added Increase() function block in ScoreCounterComponent.cs. Line 31" />
+    <MESSAGE value="Score Counter Feature works." />
+    <MESSAGE value="Uncommanded this.scoreCounterComponent.Increase(); in ScoreCounterComponent.cs line 54. To enable the score counter feature." />
+    <MESSAGE value="pushed uncommitted files" />
+    <MESSAGE value="Added Menu prefab" />
+    <MESSAGE value="Added MenuComponent.cs and MenuFactory.cs" />
+    <MESSAGE value="Declared menuPrefabStatic in PrefabResolver.cs." />
+    <MESSAGE value="Declared menuPrefabStatic GameObject variable in PrefabResolver.cs." />
+    <MESSAGE value="Updated MenuComponent.cs. Added Subject variable and IObservable function block." />
+    <MESSAGE value="Updated MenuFactory.cs. Declared MenuComponent." />
+    <MESSAGE value="Re-modified MenuFactory.cs and PrefabResolver.cs.&#10;&#10;Fixed MenuFactory.cs format and declared menuPrefab in PrefabResolver.cs." />
+    <MESSAGE value="Configured menuComponent in StartupComponent.cs." />
+    <MESSAGE value="removed main menu related files" />
+    <MESSAGE value="Main menu created, and can redirect to the main game scene when the &quot;Play&quot; button is clicked" />
+    <MESSAGE value="Added QuitGame() function block from line 17 to 21 in MainMenu.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added QuitGame() function block from line 17 to 21 in MainMenu.cs" />
+  </component>
+</project>
