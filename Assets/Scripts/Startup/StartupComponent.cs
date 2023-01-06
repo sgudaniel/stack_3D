@@ -88,6 +88,9 @@ public class StartupComponent : MonoBehaviour
             {
                 curStack.Drop();
                 GameState.GameisOver();
+
+                var audiox = _audioFactory.Create(PrefabResolver.gameOverSoundEffectPrefab);
+            audiox.Play();
             }
             else
             {
