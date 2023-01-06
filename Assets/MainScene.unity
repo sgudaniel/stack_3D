@@ -484,6 +484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stackPrefab: {fileID: 3705535934530619759, guid: a72ad4934715733458cc91f403056218, type: 3}
   _scoreCounterPrefab: {fileID: 111644546044150243, guid: 87eec1bf6859ecb4ca33fa5969eb6627, type: 3}
+  _BGM: {fileID: 602178845238175985, guid: 8e27d9c09bc38b945be20c6d9cd755a2, type: 3}
+  _stackSoundEffect: {fileID: 1140350828025276961, guid: 056cb97992d1f6148b85cdbf45de6525, type: 3}
+  _gameoverSoundEffect: {fileID: 1810124514189489060, guid: d5d31f4899ac38940a719f7bce75fba2, type: 3}
 --- !u!4 &1348895228
 Transform:
   m_ObjectHideFlags: 0

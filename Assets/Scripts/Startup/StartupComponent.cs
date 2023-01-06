@@ -15,6 +15,8 @@ public class StartupComponent : MonoBehaviour
     private Logger _logger = Logger.GetInstance();
     private StackFactory _stackFactory = new StackFactory();
 
+    private AudioFactory _audioFactory = new AudioFactory();
+
 
     StartupComponent()
     {
@@ -38,6 +40,10 @@ public class StartupComponent : MonoBehaviour
 
         this._stackComponents.Add(_stackFactory.CreateMoveableStack(new Vector3(GameState.BOUNDARY, GameState.CurrentCubeHeight, 0), false, GameState.getPrevStackLocalScale()));
         //this.stackComponent.Add(stackFactory.Create(new Vector3(0,1.2f,0), false));
+
+        var audio = _audioFactory.Create(PrefabResolver.BGMPrefab);
+        audio.Play();
+
 
         this.RegisterEvents();
 
@@ -74,6 +80,9 @@ public class StartupComponent : MonoBehaviour
 
             GameState.increaseState(curStack);
             this._scoreCounterComponent.Increase();
+
+            var audio = _audioFactory.Create(PrefabResolver.stackSoundEffectPrefab);
+            audio.Play();
 
             if (GameState.StackBounds.x <= 0 || GameState.StackBounds.y <= 0)
             {
