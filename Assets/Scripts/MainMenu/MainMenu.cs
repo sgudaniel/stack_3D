@@ -12,6 +12,11 @@ public class MainMenu : MonoBehaviour
     {
         MainThreadDispatcher.Initialize();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 }
